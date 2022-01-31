@@ -1,0 +1,126 @@
+@import url(https://fonts.googleapis.com/css2?family=Dongle&display=swap);
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'roboto', sans-serif;
+  box-sizing: border-box;
+  transition: all 0.35s linear;
+}
+
+section {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  background-color: #ffcd78;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card {
+  padding: 1rem;
+  background-color: #ffcd78;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 0 32px 16px #1113;
+}
+
+.newyear {
+  width: 800px;
+  height: 360px;
+  display: grid;
+  place-content: center;
+  border: 3px dashed #242424;
+}
+
+.newyear .text {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #ff4356;
+  font-weight: 600;
+  transform: scaleY(0);
+}
+
+.newyear:hover .text {
+  transform: scale(1);
+}
+
+.newyear::before,
+.newyear::after {
+    content: attr(data-year);
+    font-size: 11rem;
+    font-weight: 800;
+    position: absolute;
+    display: grid;
+    place-content: center;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: all 0.35s linear;
+}
+
+.newyear::before {
+  clip-path: polygon(0% 0%,
+         100% 0%,
+         100% 50%,
+         0% 50%);
+}
+
+.newyear::after {
+  clip-path: polygon(0% 50%,
+        100% 50%,
+        100% 100%,
+        0% 100%);
+}
+
+.newyear:hover::before {
+  top: -3rem
+}
+
+.newyear:hover::after {
+  bottom: -3rem;
+}
+
+section span {
+  background-color: black;
+  position: absolute;
+  z-index: 1;
+  animation: drop 5s linear infinite;
+  opacity: 0;
+}
+
+@keyframes drop {
+
+  0% {
+    transform: translateY(-120px) rotateZ(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0px) rotateZ(360deg);
+    opacity: 0;
+  }
+}
+
+section span:nth-child(4n+1) {
+  background-color: white;
+}
+
+section span:nth-child(4n+2) {
+  background-color: #00ff00;
+}
+
+section span:nth-child(4n+3) {
+  background-color: #ff4356;
+}
+
+section span:nth-child(4n+4) {
+  background-color: #ad48ff;
+}
